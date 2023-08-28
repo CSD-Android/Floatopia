@@ -159,6 +159,25 @@ fun View.margin(
 }
 
 /**
+ * 缩放
+ * @param scaleX
+ * @param scaleY
+ * */
+fun View.scale(scaleX: Float, scaleY: Float) {
+    this.scaleX = scaleX
+    this.scaleY = scaleY
+}
+
+/**
+ * 缩放
+ * @param scale
+ * */
+fun View.scale(scale: Float) {
+    this.scaleX = scale
+    this.scaleY = scale
+}
+
+/**
  * 获取 View 的边界
  * */
 val View.bound get() = Rect(left, top, right, bottom)
