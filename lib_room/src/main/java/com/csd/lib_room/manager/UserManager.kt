@@ -1,13 +1,14 @@
 package com.csd.lib_room.manager
 
-import cn.csd.lib_room.database.UserDatabase
+import com.csd.lib_room.database.User
+import com.csd.lib_room.database.UserDatabase
 
 
 object UserManager {
     private val dao by lazy { UserDatabase.getDataBase() }
 
-    fun getUser() {
-        dao.userDao().loadAllUsers()
+    fun getUser() : User {
+        return dao.userDao().loadAllUsers()
     }
 
     fun updateGameTimes(){
@@ -20,6 +21,14 @@ object UserManager {
 
     fun updateShotTimes(){
         dao.userDao().incrementScreenshotTimes()
+    }
+
+    fun deleteAll(){
+        dao.userDao().deleteAll()
+    }
+
+    fun insertUser(user: User){
+        dao.userDao().insertUser(user)
     }
 
 

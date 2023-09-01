@@ -1,10 +1,10 @@
-package cn.csd.lib_room.database
+package com.csd.lib_room.database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
+import com.csd.lib_room.database.User
 
 @Dao
 interface UserDao {
@@ -24,6 +24,8 @@ interface UserDao {
     @Query("UPDATE User SET screenshotTimes = screenshotTimes + 1")
     fun incrementScreenshotTimes()
 
+    @Query("DELETE FROM USER")
+    fun deleteAll()
 
     @Query("select * from User")
     fun loadAllUsers(): User

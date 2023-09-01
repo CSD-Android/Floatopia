@@ -1,6 +1,5 @@
-package cn.csd.lib_room.database
+package com.csd.lib_room.database
 
-import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 
@@ -16,7 +15,8 @@ abstract class UserDatabase : RoomDatabase() {
 
         @Synchronized
         fun getDataBase(): UserDatabase {
-            return instance?: Room.databaseBuilder(context = AppHelper.application,UserDatabase::class.java,"Times_Database")
+            return instance ?: Room.databaseBuilder(context = AppHelper.application,
+                UserDatabase::class.java,"Times_Database")
                 // 是否允许在主线程查询，默认是false
                 .allowMainThreadQueries()
                 // 数据库被创建或者被打开时的回调
