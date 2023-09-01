@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "path": "mod_achievement/fragment/main",
+    "className": "com.csd.mod_achievement.AchievementMain",
+    "action": "",
+    "description": "",
+    "params": {}
+  }
+]

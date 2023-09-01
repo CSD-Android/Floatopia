@@ -143,6 +143,7 @@ moshi-codegen                 = { group = "com.squareup.moshi", name = "moshi-ko
 security                      = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
 
 preference                    = { group = "androidx.preference", name = "preference-ktx", version.ref = "preference"}
+transportation-consumer = { group = "com.google.android.libraries.mapsplatform.transportation", name = "transportation-consumer", version = "1.99.0" }
 
 [plugins] # 插件声明
 com-android-application       = { id = "com.android.application", version.ref = "agp" }

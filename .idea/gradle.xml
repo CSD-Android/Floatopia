@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/lib_network" />
             <option value="$PROJECT_DIR$/lib_pic" />
             <option value="$PROJECT_DIR$/lib_room" />
+            <option value="$PROJECT_DIR$/mod_achievement" />
             <option value="$PROJECT_DIR$/mod_main" />
           </set>
         </option>

@@ -1,28 +1,31 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    id("therouter")
+    alias(libs.plugins.com.google.devtools.ksp)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
-    namespace = "com.csd.floatopia"
+    namespace = "com.example.mod_achievement"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.csd.floatopia"
+        //applicationId = "com.example.mod_achievement"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = libs.versions.android.versionCode.get().toInt()
-        versionName = libs.versions.android.compileSdk.get()
-
+        //versionCode = libs.versions.android.versionCode.get().toInt()
+        //versionName = libs.versions.android.compileSdk.get()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -33,21 +36,33 @@ android {
     kotlin {
         jvmToolchain(17)
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
 
+    implementation(libs.theRouter)
+    kapt(libs.theRouter.apt)
+
+    implementation(libs.activity.ktx)
+    implementation(libs.fragment.ktx)
+    api(libs.fastKv)
+
+    implementation(libs.lifecycle.runtime)
+
+    implementation(libs.moshi)
+    implementation(libs.xlog)
+    implementation(libs.bundles.viewModel)
+
     implementation(project(":lib_common"))
-    implementation(project(":lib_framework"))
-    implementation(project(":lib_network"))
-    implementation(project(":lib_pic"))
-    implementation(project(":lib_room"))
-//    implementation(project(":mod_main"))
-    implementation(project(":mod_achievement"))
-    implementation(project(":mod_main"))
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

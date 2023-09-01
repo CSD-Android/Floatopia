@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Floatopia"
         tools:targetApi="31" >
 
-        <activity android:name="com.csd.mod_main.ui.activity.MainFloatingActivity"
+        <activity android:name="com.csd.mod_main.ui.MainFloatingActivity"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.csd.mod_main.service.FloatopiaService" />
+<!--        <service android:name="com.csd.mod_main.service.FloatopiaService" />-->
 
     </application>
 

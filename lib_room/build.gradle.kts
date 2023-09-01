@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.fastKv)
 
     implementation(project(":lib_framework"))
+    implementation(project(":lib_common"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
