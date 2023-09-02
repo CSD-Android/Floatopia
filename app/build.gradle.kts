@@ -39,12 +39,14 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-
+    implementation(libs.mlkit.text)
+    implementation(libs.mlkit.chinese)
     implementation(project(":lib_common"))
     implementation(project(":lib_framework"))
     implementation(project(":lib_network"))
     implementation(project(":lib_pic"))
     implementation(project(":lib_room"))
+    implementation(libs.constraintLayout)
 //    implementation(project(":mod_main"))
 
 

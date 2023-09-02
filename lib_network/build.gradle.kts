@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.okhttp)
     implementation(libs.moshi)
+    implementation(libs.bundles.mlkit)
     ksp(libs.moshi.codegen)
     implementation(libs.bundles.viewModel)
 

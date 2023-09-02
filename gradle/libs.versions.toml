@@ -51,6 +51,9 @@ fastKv                        = "2.0.1"
 tracing                       = "1.1.0"
 # xlog
 xlog                          = "1.11.0"
+#mlkit
+mlkit_text_0                  ="16.0.0"
+mlkit_chinese_0               ="16.0.0"
 
 constraintLayout              = "2.1.4"
 
@@ -127,6 +130,10 @@ okhttp                        = { group = "com.squareup.okhttp3", name = "okhttp
 # okhttp logging interceptor
 okhttp-logging-interceptor    = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3" }
 
+#mlkit
+mlkit-text                    = { group = "com.google.mlkit", name = "text-recognition", version.ref = "mlkit_text_0" }
+mlkit-chinese                 = { group = "com.google.mlkit", name = "text-recognition-chinese", version.ref = "mlkit_chinese_0" }
+
 # fastKv
 fastKv                        = { group = "io.github.billywei01", name = "fastkv", version.ref = "fastKv" }
 
@@ -156,3 +163,4 @@ coroutines                    = ["coroutines-core", "coroutines-android"]
 viewModel                     = ["viewmodel", "viewmodel-savedstate"]
 room                          = ["room-ktx", "room-runtime"]
 retrofit                      = ["retrofit", "retrofit-moshi", "okhttp-logging-interceptor"]
+mlkit                         = ["mlkit-text", "mlkit-chinese"]
