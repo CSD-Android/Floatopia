@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.bundles.viewModel)
 
     implementation(project(":lib_common"))
-
+    implementation(project(":lib_room"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

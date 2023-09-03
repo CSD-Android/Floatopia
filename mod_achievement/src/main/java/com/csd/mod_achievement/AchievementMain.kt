@@ -1,10 +1,13 @@
 package com.csd.mod_achievement
 
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import com.csd.lib_common.constant.ROUTE_ACHIEVEMENT_FRAGMENT_MAIN
 import com.therouter.router.Route
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +15,8 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
+import com.csd.lib_room.database.User
+import com.csd.lib_room.manager.UserManager
 import com.example.mod_achievement.R
 import kotlin.math.roundToInt
 
@@ -26,12 +31,17 @@ class AchievementMain : Fragment() {
     private var firstRow: LinearLayoutCompat? = null
     private var secondRow: LinearLayoutCompat? = null
     private var thirdRow: LinearLayoutCompat? = null
+    private val user: User = UserManager.getUser()
+    private val gameTimes = user.gameTimes
+    private val socialTimes = user.socialTimes
+    private val screenshotTimes = user.screenshotTimes
+    private lateinit var fragmentContainer : FrameLayout
 
 //    companion object {
-//        fun newInstance(resId: Int): AchievementMain {
+//        fun newInstance(frameLayout: FrameLayout): AchievementMain {
 //            val fragment = AchievementMain()
 //            val args = Bundle()
-//            args.putInt("resId", resId)
+//            args.putParcelable("myFrameLayout", frameLayout)
 //            fragment.arguments = args
 //            return fragment
 //        }
@@ -41,17 +51,20 @@ class AchievementMain : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        fragmentContainer = activity?.findViewById(R.id.myFragment)!!
+        Log.d("--------------------------=======", "onCreateView: -=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-= ")
         return inflater.inflate(R.layout.achievement_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         firstRow = addLinearLayout()
         secondRow = addLinearLayout()
         thirdRow = addLinearLayout()
 
         val topBar = view.findViewById<Toolbar>(R.id.topToolbar1)
-        val fragmentContainer = view.findViewById<FrameLayout>(R.id.myFragment)
+
         // 找到按钮
         val myButton = topBar.findViewById<ImageButton>(R.id.back)
 
@@ -62,16 +75,25 @@ class AchievementMain : Fragment() {
 
 
         val gameKing = ImageView(context)
+        if(gameTimes<100){
+            convertToBlackAndWhite(gameKing)
+        }
         gameKing.setOnClickListener { gameKingFragment() }
         addAchievementToRow(firstRow!!, gameKing, R.drawable.achievement_game_king, fragmentContainer)
 
         //截屏达人勋章
         val screenShot = ImageView(context)
+        if(screenshotTimes<100) {
+            convertToBlackAndWhite(screenShot)
+        }
         screenShot.setOnClickListener { screenShotFragment() }
         addAchievementToRow(firstRow!!,screenShot, R.drawable.achievement_screen_shot, fragmentContainer)
 
         //社交达人勋章
         val socializingKing = ImageView(context)
+        if(socialTimes<100){
+            convertToBlackAndWhite(socializingKing)
+        }
         socializingKing.setOnClickListener { socialFragment() }
         addAchievementToRow(firstRow!!,socializingKing, R.drawable.achievement_socializing_king, fragmentContainer)
     }
@@ -104,7 +126,7 @@ class AchievementMain : Fragment() {
     }
 
     private fun addLinearLayout(): LinearLayoutCompat {
-        val myLayout: LinearLayoutCompat = requireView().findViewById(R.id.my_linear)
+        val myLayout: FrameLayout = requireView().findViewById(R.id.fragment_container)
         val context = requireContext()
 
         val newLinearLayout = LinearLayoutCompat(context)
@@ -122,17 +144,25 @@ class AchievementMain : Fragment() {
     }
 
     private fun gameKingFragment() {
-        val gameKingFragment = AchievementFragment.newInstance(R.layout.achievement_game_king_fragment, 20)
+        val gameKingFragment = AchievementFragment.newInstance(R.layout.achievement_game_king_fragment, gameTimes)
         gameKingFragment.show(childFragmentManager, "gameKingFragment")
     }
 
     private fun screenShotFragment() {
-        val screenShotFragment = AchievementFragment.newInstance(R.layout.achievement_screen_shot_fragment, 10)
+        val screenShotFragment = AchievementFragment.newInstance(R.layout.achievement_screen_shot_fragment, screenshotTimes)
         screenShotFragment.show(childFragmentManager, "screenShotFragment")
     }
 
     private fun socialFragment() {
-        val socialFragment = AchievementFragment.newInstance(R.layout.achivement_social_fragment, 10)
+        val socialFragment = AchievementFragment.newInstance(R.layout.achivement_social_fragment, socialTimes)
         socialFragment.show(childFragmentManager, "socialFragment")
+    }
+
+    private fun convertToBlackAndWhite(imageView: ImageView) {
+        val matrix = ColorMatrix()
+        matrix.setSaturation(0f) // 设置饱和度为0，即将图片变成黑白
+
+        val filter = ColorMatrixColorFilter(matrix)
+        imageView.colorFilter = filter
     }
 }

@@ -1,5 +1,12 @@
 [
   {
+    "path": "mod_achievement/activity/main",
+    "className": "com.csd.mod_achievement.MainActivity2",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "mod_achievement/fragment/main",
     "className": "com.csd.mod_achievement.AchievementMain",
     "action": "",

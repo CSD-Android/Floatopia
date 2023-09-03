@@ -23,6 +23,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.csd.mod_achievement.MainActivity2"
+            android:enabled="true"
+            android:exported="true">
+        </activity>
+
 <!--        <service android:name="com.csd.mod_main.service.FloatopiaService" />-->
 
     </application>

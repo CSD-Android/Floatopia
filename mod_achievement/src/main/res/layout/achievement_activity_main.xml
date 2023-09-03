@@ -6,8 +6,7 @@
     android:id="@+id/my_linear"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical"
-    tools:context=".AchievementSystem">
+    android:orientation="vertical">
 
     <Button
         android:layout_width="match_parent"

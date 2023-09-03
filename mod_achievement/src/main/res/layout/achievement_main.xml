@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/my_linear"
+    android:id="@+id/my_frame"
     android:background="#EDEDED"
-    tools:context=".AchievementMain">
+    tools:context="com.csd.mod_achievement.MainActivity2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,29 +14,34 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/topToolbar1"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="16dp"
             android:background="#EDEDED"
             android:elevation="0dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
             <ImageButton
+                android:id="@+id/back"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:id="@+id/back"
-                android:src="@drawable/achievement_back"
-                android:background="@null"/>
+                android:background="@null"
+                android:src="@drawable/achievement_back" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="   成就"
                 android:gravity="center_vertical"
+                android:text="   成就"
                 android:textColor="#1C1818"
-                android:textStyle="bold"
-                android:textSize="35dp"/>
+                android:textSize="35dp"
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="654dp"/>
 
     </LinearLayout>
 

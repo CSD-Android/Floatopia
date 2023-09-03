@@ -1,11 +1,14 @@
 package com.csd.mod_achievement
 
 import android.graphics.Color
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 
@@ -36,6 +39,7 @@ class AchievementFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(resId, container, false)
 
         val textView = TextView(context).apply {
@@ -43,7 +47,6 @@ class AchievementFragment : DialogFragment() {
             gravity = Gravity.CENTER
             setTextColor(Color.parseColor("#000000"))
             textSize = 16f
-
         }
 
         val layout = view as ViewGroup // Since view is your root layout
@@ -51,4 +54,7 @@ class AchievementFragment : DialogFragment() {
 
         return view
     }
+
+
+
 }

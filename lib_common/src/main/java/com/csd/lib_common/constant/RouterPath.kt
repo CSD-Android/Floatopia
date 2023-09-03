@@ -11,3 +11,4 @@ package com.csd.lib_common.constant
 
 const val ROUTE_MAIN_ACTIVITY_MAIN = "mod_main/activity/main"
 const val ROUTE_ACHIEVEMENT_FRAGMENT_MAIN = "mod_achievement/fragment/main"
+const val ROUTE_ACHIEVEMENT_ACTIVITY_MAIN = "mod_achievement/activity/main"
