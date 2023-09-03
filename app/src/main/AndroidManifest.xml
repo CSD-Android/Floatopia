@@ -13,11 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Floatopia"
         tools:targetApi="31">
+
         <activity
             android:name=".Clip"
-            android:exported="false" />
-        <activity
-            android:name="com.csd.mod_main.ui.activity.MainFloatingActivity"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -27,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.csd.mod_main.service.FloatopiaService" />
+        <service android:name=".Clip" />
     </application>
 
 </manifest>

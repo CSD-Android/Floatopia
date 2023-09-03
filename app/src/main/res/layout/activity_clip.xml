@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".Clip">
 
+    <Button
+        android:id="@+id/set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:text="set_biemap"
+        app:layout_constraintEnd_toStartOf="@+id/get"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:text="get_bitmap"
+        app:layout_constraintEnd_toStartOf="@+id/get_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/get_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.csd.floatopia.BitmapClippingView
+            android:id="@+id/my_clip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/main_textview"
+        android:layout_width="411dp"
+        android:layout_height="545dp"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/main_imageview"
+        tools:layout_editor_absoluteX="-1dp" />
+
+
+    <ImageView
+        android:id="@+id/main_imageview"
+        android:layout_width="137dp"
+        android:layout_height="134dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/get_text"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/googleg_standard_color_18" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

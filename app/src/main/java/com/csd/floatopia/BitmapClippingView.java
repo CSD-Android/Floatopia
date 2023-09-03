@@ -75,9 +75,10 @@ public class BitmapClippingView extends View {
 
     private float mindleftLine=-1;//左中选区
 
-    private String Clip_Mod="Clip";//模式
+    private String Clip_Mod="Clip_1";//模式
 
     private String MOD_CLIP ="Clip"; //剪裁模式
+    private String MOD_CLIP_1="Clip_1";
 
     private String MOD_PEN ="PEN";//画笔模式
     private String focus="NONE";//事件焦点
@@ -143,13 +144,17 @@ public class BitmapClippingView extends View {
         super.onDraw(canvas);
         if (bitmap==null)return;
 
-        scaleStep=widthSize/bitmapWidth;
+        scaleStep=(widthSize/bitmapWidth);
         float backgroundImgHeight=bimapHeight*scaleStep;
         heightSize=backgroundImgHeight;//把有效图像高度设置作为布局高度计算
 
         if (initTag){
             text_p=Recognizer_null;//空闲
             pen_r=5;
+
+            //绘制初始状态的选框（最大选框）
+
+
             //绘制参考背景背景
             Rect rect=new Rect(0,0,(int)bitmapWidth,(int)bimapHeight);//裁剪图片中的部分(此处：全图)
             RectF rectF=new RectF(0,0,widthSize,backgroundImgHeight);//显示在屏幕中的什么位置
@@ -245,7 +250,7 @@ public class BitmapClippingView extends View {
 
                 back_hightSize=back_bottom-back_top;
 
-                back_widthSize=(3F/4F)*back_hightSize/2f;
+                back_widthSize=(widthSize/heightSize)*back_hightSize/2f;
 
                 float mid_rl=(rightLine+leftLine)/2;
 
@@ -286,7 +291,7 @@ public class BitmapClippingView extends View {
             int cutWidth=(int) ((back_right/scaleStep)-(back_left/scaleStep));
             int cutHeight=(int) (back_bottom/scaleStep-back_top/scaleStep);
 
-
+            if(startY+cutHeight>bitmap.getHeight())cutHeight=bitmap.getHeight()-startY;
             Bitmap newBitmap=Bitmap.createBitmap(bitmap,startX,startY,cutWidth,cutHeight,null,false);
 
             mBitmap=Bitmap.createScaledBitmap(newBitmap,(int)widthSize,(int)heightSize,true);
@@ -320,6 +325,14 @@ public class BitmapClippingView extends View {
             canvas.drawCircle(pen_x,pen_y,pen_r,tuyaPaint);
 
             canvas.save();
+        }
+
+        if (Clip_Mod.equals(MOD_CLIP_1)){
+            Rect rect=new Rect(0,0,(int)bitmapWidth,(int)bimapHeight);//裁剪图片中的部分(此处：全图)
+            RectF rectF=new RectF(0,0,widthSize,backgroundImgHeight);//显示在屏幕中的什么位置
+            canvas.drawBitmap(bitmap,rect,rectF,bitmapPaint);
+            canvas.save();
+
         }
 
         mindtopLine=(rightLine+leftLine)/2;
@@ -433,7 +446,7 @@ public class BitmapClippingView extends View {
     private boolean actionMove(float touchX, float touchY) {
         Log.d("fxHou","滑动X="+touchX+"   touchY="+touchY);
 
-        if (Clip_Mod.equals(MOD_CLIP)){
+        if (Clip_Mod.equals(MOD_CLIP) ||Clip_Mod.equals(MOD_CLIP_1)){
 
 
 
@@ -990,16 +1003,6 @@ public class BitmapClippingView extends View {
 public Text getText(){
 
     try_getText(mBitmap);
-
-    int i=0;
-    while (text_p==Recognizer_ing){
-        i++;
-        if(i>5000){
-            text_p=Recognizer_null;
-            return null;
-        };
-
-    }
 
     if (text_p==Recognizer_Success&&my_text!=null){
         text_p=Recognizer_null;
